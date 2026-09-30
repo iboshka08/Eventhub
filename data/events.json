@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "title": "Node.js Tashkent Meetup #12",
+    "description": "Express va backend haqida suhbat",
+    "category": "meetup",
+    "city": "Toshkent",
+    "venue": "IT Park, 3-qavat",
+    "starts_at": "2027-02-15T18:00:00.000Z",
+    "price": 0,
+    "capacity": 120,
+    "available_seats": 120,
+    "created_at": "2026-09-30T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Yulduzlar Live Concert",
+    "description": "Jonli musiqa va katta sahna konserti",
+    "category": "concert",
+    "city": "Toshkent",
+    "venue": "Humo Arena",
+    "starts_at": "2027-03-20T16:00:00.000Z",
+    "price": 180000,
+    "capacity": 8000,
+    "available_seats": 8000,
+    "created_at": "2026-09-30T10:05:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Stand-up Kechasi: Kulgi Time",
+    "description": "Mahalliy komiklar ishtirokidagi stand-up shou",
+    "category": "standup",
+    "city": "Samarqand",
+    "venue": "Yoshlar Markazi",
+    "starts_at": "2027-04-08T17:30:00.000Z",
+    "price": 75000,
+    "capacity": 350,
+    "available_seats": 350,
+    "created_at": "2026-09-30T10:10:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Frontend Workshop: React Basics",
+    "description": "React asoslari bo'yicha amaliy master-klass",
+    "category": "workshop",
+    "city": "Toshkent",
+    "venue": "Najot Ta'lim, Chilonzor",
+    "starts_at": "2027-05-12T09:00:00.000Z",
+    "price": 120000,
+    "capacity": 60,
+    "available_seats": 60,
+    "created_at": "2026-09-30T10:15:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Toshkent Night Run 10K",
+    "description": "10 kilometrli ommaviy tungi yugurish musobaqasi",
+    "category": "sport",
+    "city": "Toshkent",
+    "venue": "Magic City oldi",
+    "starts_at": "2027-06-05T15:00:00.000Z",
+    "price": 50000,
+    "capacity": 1500,
+    "available_seats": 1500,
+    "created_at": "2026-09-30T10:20:00.000Z"
+  }
+]

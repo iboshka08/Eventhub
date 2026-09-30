@@ -1,0 +1,29 @@
+{
+  "name": "eventhub-api",
+  "version": "1.0.0",
+  "description": "EventHub — tadbirlar va chiptalarni bron qilish REST API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "eventhub"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "joi": "^18.2.9",
+    "nodemailer": "^10.0.13"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
