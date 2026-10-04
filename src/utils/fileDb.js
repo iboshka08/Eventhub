@@ -1,15 +1,31 @@
-const fs = require("fs/promises");
-const path = require("path");
+import { join } from 'path'
+import { readFile, writeFile } from 'fs/promises'
 
-const filePath = (name) => path.join(__dirname, "../../data", `${name}.json`);
+const filePath = (name) =>
+  join(process.cwd(), 'data', `${name}.json`)
 
 async function readData(name) {
-  const text = await fs.readFile(filePath(name), "utf-8");
-  return JSON.parse(text);
+  try {
+    const data = await readFile(filePath(name), 'utf-8')
+    return JSON.parse(data)
+  } catch (err) {
+    console.log(`Error is on readData function err: ${err.message}`)
+  }
 }
 
 async function writeData(name, data) {
-  await fs.writeFile(filePath(name), JSON.stringify(data, null, 2));
+  try {
+    await writeFile(
+      filePath(name),
+      JSON.stringify(data, null, 2),
+      'utf-8'
+    )
+  } catch (err) {
+    console.log(`Error is on writeData function err: ${err.message}`)
+  }
 }
 
-module.exports = { readData, writeData };
+export {
+  readData,
+  writeData
+}

@@ -1,20 +1,24 @@
-const express = require("express");
-const {
-  createBooking,
-  listBookings,
-  getBooking,
-  updateBooking,
-  cancelBooking,
-  deleteBooking
-} = require("../controllers/booking.controller");
+import { Router } from 'express'
 
-const router = express.Router();
+import {
+    createBooking,
+    listBookings,
+    getBooking,
+    updateBooking,
+    cancelBooking,
+    deleteBooking
+} from '../controllers/booking.controller.js'
 
-router.post("/", createBooking);
-router.get("/", listBookings);
-router.get("/:id", getBooking);
-router.put("/:id/cancel", cancelBooking);
-router.put("/:id", updateBooking);
-router.delete("/:id", deleteBooking);
+const router = Router()
 
-module.exports = router;
+router
+    .post('/', createBooking)
+    .get('/', listBookings)
+    .get('/:id', getBooking)
+    .put('/:id/cancel', cancelBooking)
+    .put('/:id', updateBooking)
+    .delete('/:id', deleteBooking)
+
+export {
+    router
+}

@@ -1,20 +1,24 @@
-const express = require("express");
-const {
-  createEvent,
-  listEvents,
-  getEvent,
-  updateEvent,
-  deleteEvent,
-  getEventBookings
-} = require("../controllers/event.controller");
+import { Router } from 'express'
 
-const router = express.Router();
+import {
+    createEvent,
+    listEvents,
+    getEvent,
+    updateEvent,
+    deleteEvent,
+    getEventBookings
+} from '../controllers/event.controller.js'
 
-router.post("/", createEvent);
-router.get("/", listEvents);
-router.get("/:id/bookings", getEventBookings);
-router.get("/:id", getEvent);
-router.put("/:id", updateEvent);
-router.delete("/:id", deleteEvent);
+const router = Router()
 
-module.exports = router;
+router
+    .post('/', createEvent)
+    .get('/', listEvents)
+    .get('/:id/bookings', getEventBookings)
+    .get('/:id', getEvent)
+    .put('/:id', updateEvent)
+    .delete('/:id', deleteEvent)
+
+export {
+    router
+}

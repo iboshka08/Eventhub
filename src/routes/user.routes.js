@@ -1,18 +1,24 @@
-const express = require("express");
-const {
+import { Router } from 'express'
+
+import {
   getUser,
   updateUser,
   changePassword,
   deleteUser
-} = require("../controllers/user.controller");
-const { getUserBookings } = require("../controllers/booking.controller");
+} from '../controllers/user.controller.js'
 
-const router = express.Router();
+import { getUserBookings } from '../controllers/booking.controller.js'
 
-router.get("/:id/bookings", getUserBookings);
-router.get("/:id", getUser);
-router.put("/:id/password", changePassword);
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
 
-module.exports = router;
+const router = Router()
+
+router
+  .get('/:id/bookings', getUserBookings)
+  .get('/:id', getUser)
+  .put('/:id/password', changePassword)
+  .put('/:id', updateUser)
+  .delete('/:id', deleteUser)
+
+export {
+  router
+}

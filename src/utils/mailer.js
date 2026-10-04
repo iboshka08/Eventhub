@@ -1,46 +1,45 @@
-const nodemailer = require("nodemailer");
+import nodemailer from 'nodemailer'
+import { config } from 'dotenv'
 
-function getTransporter() {
-  const mode = (process.env.MAIL_MODE || "json").toLowerCase();
+config()
 
-  if (mode !== "smtp") {
-    return nodemailer.createTransport({ jsonTransport: true });
-  }
-
-  const port = Number(process.env.MAIL_PORT || 587);
-  return nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
-    port,
-    secure: port === 465,
-    auth: process.env.MAIL_USER && process.env.MAIL_PASS
-      ? { user: process.env.MAIL_USER, pass: process.env.MAIL_PASS }
-      : undefined
-  });
-}
+    port: Number(process.env.MAIL_PORT || 587),
+    secure: Number(process.env.MAIL_PORT || 587) === 465,
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+    }
+})
 
 async function sendMail({ to, subject, html }) {
-  const transporter = getTransporter();
-  const info = await transporter.sendMail({
-    from: process.env.MAIL_FROM || "EventHub <no-reply@eventhub.uz>",
-    to,
-    subject,
-    html
-  });
+    if (process.env.MAIL_MODE === 'json') {
+        console.log(`Email to: ${to}`)
+        console.log(`Subject: ${subject}`)
+        console.log(html)
 
-  if ((process.env.MAIL_MODE || "json").toLowerCase() !== "smtp") {
-    console.log(`✉ Email (test): ${subject} -> ${to}`);
-  }
+        return null
+    }
 
-  return info;
+    await transporter.sendMail({
+        from: process.env.MAIL_FROM || process.env.MAIL_USER,
+        to,
+        subject,
+        html
+    })
 }
 
 async function sendMailSafe(options) {
-  try {
-    return await sendMail(options);
-  } catch (error) {
-    console.error("Email yuborishda xato:", error.message);
-    return null;
-  }
+    try {
+        return await sendMail(options)
+    } catch (err) {
+        console.log(`Error is on sendMail function err: ${err.message}`)
+        return null
+    }
 }
 
-module.exports = { sendMail, sendMailSafe };
+export {
+    sendMail,
+    sendMailSafe
+}
